@@ -211,17 +211,18 @@ USE railway;
 -- 			INSERT DE REGISTROS DE EJEMPLO
 -- ===========================================
 
+
 -- ===============================
--- ESPECIALIDADES
+-- ESPECIALIDAD
 -- ===============================
-INSERT INTO especialidad (nombre, descripcion, usuario_creacion)
+INSERT INTO especialidad (nombre, descripcion)
 VALUES
-    ('Cardiología', 'Especialidad del corazón', 'admin'),
-    ('Pediatría', 'Atención médica a niños', 'admin'),
-    ('Dermatología', 'Especialidad de la piel', 'admin'),
-    ('Neurología', 'Tratamiento del sistema nervioso', 'admin'),
-    ('Ginecología', 'Salud reproductiva y atención de la mujer', 'admin'),
-    ('Traumatología', 'Diagnóstico y tratamiento de lesiones óseas y musculares', 'admin');
+    ('Cardiología', 'Especialidad del corazón'),
+    ('Pediatría', 'Atención médica a niños'),
+    ('Dermatología', 'Especialidad de la piel'),
+    ('Neurología', 'Tratamiento del sistema nervioso'),
+    ('Ginecología', 'Salud reproductiva y atención de la mujer'),
+    ('Traumatología', 'Diagnóstico y tratamiento de lesiones óseas y musculares');
 
 -- ===============================
 -- ROLES
@@ -243,6 +244,7 @@ VALUES
     ('rrhh', 'rrhh@empresa.com', '$2a$10$vHXK9kYSIOpkpKd9I.wwiOHCTG74gHLMDiS1KXW86I9hq9drkzxLO', 'Recursos', 'Humanos', TRUE),
     ('recepcion', 'recepcion@empresa.com', '$2a$10$vHXK9kYSIOpkpKd9I.wwiOHCTG74gHLMDiS1KXW86I9hq9drkzxLO', 'Recepcion', 'FrontDesk', TRUE),
     ('gerente', 'gerente@empresa.com', '$2a$10$vHXK9kYSIOpkpKd9I.wwiOHCTG74gHLMDiS1KXW86I9hq9drkzxLO', 'Gerente', 'General', TRUE);
+
 
 -- tabla intermedia UsuarioRol
 
@@ -289,14 +291,7 @@ VALUES
     ('Paola', 'Mendoza Quispe', 'CMP5566', 2, 'admin');
 
 
--- ===============================
--- HORARIOS DE MÉDICOS
--- ===============================
-INSERT INTO horario (dia, horaInicio, horaFin, idMedico, usuario_creacion)
-VALUES
-    ('Lunes', '08:00:00', '12:00:00', 1, 'admin'),
-    ('Martes', '09:00:00', '13:00:00', 2, 'admin'),
-    ('Miércoles', '14:00:00', '18:00:00', 3, 'admin');
+
 
 -- ===============================
 -- CITAS MÉDICAS
@@ -326,39 +321,6 @@ VALUES
     ('2025-09-10', '11:15:00', 6, 5, 'Chequeo preventivo', 'PENDIENTE', 'recepcion2'),
     ('2025-09-11', '13:40:00', 7, 6, 'Control de glucosa', 'CONFIRMADA', 'recepcion1'),
     ('2025-09-12', '09:35:00', 8, 7, 'Consulta por tos crónica', 'PENDIENTE', 'recepcion1');
-
-
--- ===============================
--- HISTORIA CLÍNICA
--- ===============================
-INSERT INTO historiaclinica (idPaciente, fecha, diagnostico, tratamiento, observaciones, usuario_creacion)
-VALUES
-    (1, '2025-08-10', 'Arritmia cardiaca', 'Medicamentos antiarrítmicos', 'Paciente con antecedentes familiares', 'drjose'),
-    (2, '2025-08-12', 'Resfriado común', 'Reposo e hidratación', 'Se recomienda control en 7 días', 'drjose');
-
--- ===============================
--- PROVEEDORES
--- ===============================
-INSERT INTO proveedor (nombre, ruc, direccion, telefono, email, usuario_creacion)
-VALUES
-    ('Laboratorios Perú', '20123456789', 'Av. Medicinas 111', '987111222', 'ventas@labperu.com', 'admin'),
-    ('Farmacéutica Andina', '20987654321', 'Jr. Salud 222', '988222333', 'contacto@farmandina.com', 'admin');
-
--- ===============================
--- MEDICAMENTOS
--- ===============================
-INSERT INTO medicamento (nombre, descripcion, stockActual, stockMinimo, precio, fechaVencimiento, usuario_creacion)
-VALUES
-    ('Paracetamol 500mg', 'Tabletas para dolor y fiebre', 100, 20, 0.50, '2026-12-31', 'admin'),
-    ('Amoxicilina 500mg', 'Antibiótico de amplio espectro', 50, 10, 1.20, '2025-11-30', 'admin');
-
--- ===============================
--- INGRESO DE MEDICAMENTOS
--- ===============================
-INSERT INTO ingreso_medicamento (idMedicamento, idProveedor, fechaIngreso, cantidad, precioCompra, usuario_creacion)
-VALUES
-    (1, 1, '2025-08-01', 100, 0.30, 'admin'),
-    (2, 2, '2025-08-05', 50, 0.80, 'admin');
 
 
 
