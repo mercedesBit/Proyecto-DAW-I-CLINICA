@@ -61,4 +61,9 @@ public class CitaMedicaRepositoryImpl implements CitaMedicaRepository {
     public Page<CitaMedicaDTO> findAllPaginado(Pageable pageable) {
         return citaMedicaRepositoryJpa.findAllCitasConNombres(pageable);
     }
+
+    @Override
+    public Integer findAllCitas() {
+        return citaMedicaRepositoryJpa.findAllTotalCitas();
+    }
 }

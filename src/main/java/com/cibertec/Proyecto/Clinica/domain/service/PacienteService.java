@@ -12,4 +12,6 @@ public interface PacienteService {
     Paciente actualizar(Paciente paciente);
     void eliminar(Integer id);
     Page<Paciente> listarPaginado(int page, int size);
+
+    Integer obtenerTotalPacientes();
 }

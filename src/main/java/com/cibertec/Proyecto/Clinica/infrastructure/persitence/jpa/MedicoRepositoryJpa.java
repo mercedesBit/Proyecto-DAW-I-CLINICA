@@ -17,4 +17,9 @@ public interface MedicoRepositoryJpa extends JpaRepository<MedicoEntity, Integer
     @Query("SELECT m FROM MedicoEntity m JOIN FETCH m.especialidad e WHERE e.id = :especialidadId")
     List<MedicoEntity> findByEspecialidadId(@Param("especialidadId") Integer especialidadId);
 
+    @Query(
+            value = "SELECT COUNT(c) " +
+                    "FROM MedicoEntity c "
+    )
+    Integer findAllResumenMedicos();
 }

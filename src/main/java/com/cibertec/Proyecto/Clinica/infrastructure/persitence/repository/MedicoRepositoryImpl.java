@@ -70,4 +70,9 @@ public class MedicoRepositoryImpl implements MedicoRepository {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Integer findAllResumenMedicos() {
+        return medicoRepositoryJpa.findAllResumenMedicos();
+    }
+
 }

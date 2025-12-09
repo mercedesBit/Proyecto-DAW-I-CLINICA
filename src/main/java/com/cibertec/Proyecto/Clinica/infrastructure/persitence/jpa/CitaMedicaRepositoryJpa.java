@@ -27,4 +27,10 @@ public interface CitaMedicaRepositoryJpa extends JpaRepository<CitaMedicaEntity,
     )
     Page<CitaMedicaDTO> findAllCitasConNombres(Pageable pageable);
 
+
+    @Query(
+            value = "SELECT COUNT(c) " +
+                    "FROM CitaMedicaEntity c "
+    )
+    Integer findAllTotalCitas();
 }

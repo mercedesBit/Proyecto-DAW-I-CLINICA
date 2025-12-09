@@ -14,4 +14,5 @@ public interface MedicoService {
     Page<Medico> listarPaginado(int page, int size);
     List<Medico> listarPorEspecialidad(Integer especialidadId);
 
+    Integer obtenerTotalMedicos();
 }

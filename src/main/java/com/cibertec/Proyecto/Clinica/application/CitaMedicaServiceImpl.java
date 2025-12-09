@@ -55,4 +55,9 @@ public class CitaMedicaServiceImpl implements CitaMedicaService {
     public Page<CitaMedicaDTO> listarCitasPaginadas(Pageable pageable) {
         return citaMedicaRepository.findAllPaginado(pageable);
     }
+
+    @Override
+    public Integer obtenerTotalCitas() {
+        return citaMedicaRepository.findAllCitas();
+    }
 }

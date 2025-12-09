@@ -17,4 +17,6 @@ public interface CitaMedicaRepository {
     @Transactional
     CitaMedica update(CitaMedica citaMedica);
     Page<CitaMedicaDTO> findAllPaginado(Pageable pageable);
+
+    Integer findAllCitas();
 }

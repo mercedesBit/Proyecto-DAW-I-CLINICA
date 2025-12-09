@@ -17,4 +17,6 @@ public interface PacienteRepository
     Paciente update(Paciente paciente);
     void deleteById(Integer id);
     Page<Paciente> findAllPaginado(Pageable pageable);
+
+    Integer findAllResumenPacientes();
 }

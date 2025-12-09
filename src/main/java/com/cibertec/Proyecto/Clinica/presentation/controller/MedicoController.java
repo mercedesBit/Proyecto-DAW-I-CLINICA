@@ -69,5 +69,10 @@ public class MedicoController {
         }
         return ResponseEntity.ok(medicos);
     }
+    //Obtener la cantidad total de medicos
+    @GetMapping("/total-medicos")
+    public ResponseEntity<Integer> obtenerTotalMedicos() {
+        return ResponseEntity.ok(medicoService.obtenerTotalMedicos());
+    }
 
 }

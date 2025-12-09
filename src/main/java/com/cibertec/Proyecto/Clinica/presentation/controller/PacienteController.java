@@ -55,5 +55,8 @@ public class PacienteController {
         service.eliminar(id);
         return ResponseEntity.ok("Paciente eliminado");
     }
-
+    @GetMapping("/total-pacientes")
+    public ResponseEntity<Integer> obtenerTotalPacientes() {
+        return ResponseEntity.ok(service.obtenerTotalPacientes());
+    }
 }

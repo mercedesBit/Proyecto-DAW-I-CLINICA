@@ -15,4 +15,6 @@ public interface CitaMedicaService {
     CitaMedica actualizarCita(CitaMedica citaMedica);
     void eliminarCita(Integer id);
     Page<CitaMedicaDTO> listarCitasPaginadas(Pageable pageable);
+
+    Integer obtenerTotalCitas();
 }

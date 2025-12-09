@@ -48,5 +48,11 @@ public class CitaMedicaController {
         citaMedicaService.eliminarCita(id);
         return ResponseEntity.noContent().build();
     }
+    //Obtener la cantidad total de citas medicas
+    @GetMapping("/total-citas")
+    public ResponseEntity<Integer> obtenerTotalCitas() {
+        return ResponseEntity.ok(citaMedicaService.obtenerTotalCitas());
+    }
+
 
 }

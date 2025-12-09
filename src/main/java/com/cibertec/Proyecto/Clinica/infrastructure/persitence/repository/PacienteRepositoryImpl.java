@@ -76,4 +76,9 @@ public class PacienteRepositoryImpl implements PacienteRepository {
         return pacienteRepositoryJpa.findAllPaginado(pageable)
                 .map(pacienteMapper::toDomain);
     }
+
+    @Override
+    public Integer findAllResumenPacientes() {
+        return pacienteRepositoryJpa.findAllResumenPacientes();
+    }
 }

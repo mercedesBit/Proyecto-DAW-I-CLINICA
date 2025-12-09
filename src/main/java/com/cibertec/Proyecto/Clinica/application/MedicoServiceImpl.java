@@ -56,9 +56,10 @@ public class MedicoServiceImpl implements MedicoService {
         return medicoRepository.findByEspecialidadId(especialidadId);
     }
 
-
-
-
+    @Override
+    public Integer obtenerTotalMedicos() {
+        return medicoRepository.findAllResumenMedicos();
+    }
 
 
 }

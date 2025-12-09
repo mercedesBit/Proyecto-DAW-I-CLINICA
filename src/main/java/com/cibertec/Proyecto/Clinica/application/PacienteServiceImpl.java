@@ -49,4 +49,9 @@ public class PacienteServiceImpl implements PacienteService {
     public Page<Paciente> listarPaginado(int page, int size) {
         return repository.findAllPaginado(PageRequest.of(page, size));
     }
+
+    @Override
+    public Integer obtenerTotalPacientes() {
+        return repository.findAllResumenPacientes();
+    }
 }

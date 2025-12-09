@@ -40,4 +40,10 @@ public interface PacienteRepositoryJpa extends JpaRepository<PacienteEntity, Int
         ORDER BY p.apellidos ASC
     """)
         Page<PacienteEntity> findAllPaginado(Pageable pageable);
+
+    @Query(
+            value = "SELECT COUNT(c) " +
+                    "FROM PacienteEntity c "
+    )
+    Integer findAllResumenPacientes();
 }

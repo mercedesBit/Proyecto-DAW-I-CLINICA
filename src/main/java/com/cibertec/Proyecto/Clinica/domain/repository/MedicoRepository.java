@@ -17,4 +17,6 @@ public interface MedicoRepository {
     Medico update(Medico medico);
     Page<Medico> listarPaginado(Pageable pageable);
     List<Medico> findByEspecialidadId(Integer especialidadId);
+
+    Integer findAllResumenMedicos();
 }
