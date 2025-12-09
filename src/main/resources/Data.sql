@@ -88,22 +88,6 @@ CREATE TABLE usuario_rol (
                              FOREIGN KEY (rol_id) REFERENCES roles(id) ON DELETE CASCADE
 );
 
--- ===============================
--- TABLA HORARIO
--- ===============================
-CREATE TABLE horario (
-                         id INT PRIMARY KEY AUTO_INCREMENT,
-                         dia ENUM('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo') NOT NULL,
-                         horaInicio TIME NOT NULL,
-                         horaFin TIME NOT NULL,
-                         idMedico INT NOT NULL,
-                         FOREIGN KEY(idMedico) REFERENCES medico(id)
-                             ON DELETE CASCADE ON UPDATE CASCADE,
-                         fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-                         usuario_creacion VARCHAR(50),
-                         fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                         usuario_actualizacion VARCHAR(50)
-);
 
 -- ===============================
 -- TABLA CITA MEDICA
@@ -125,83 +109,11 @@ CREATE TABLE citamedica (
                             fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                             usuario_actualizacion VARCHAR(50)
 );
-
--- ===============================
--- TABLA HISTORIA CLINICA
--- ===============================
-CREATE TABLE historiaclinica (
-                                 id INT PRIMARY KEY AUTO_INCREMENT,
-                                 idPaciente INT NOT NULL,
-                                 fecha DATE NOT NULL,
-                                 diagnostico VARCHAR(255),
-                                 tratamiento VARCHAR(255),
-                                 observaciones TEXT,
-                                 FOREIGN KEY(idPaciente) REFERENCES paciente(id)
-                                     ON DELETE CASCADE ON UPDATE CASCADE,
-                                 fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-                                 usuario_creacion VARCHAR(50),
-                                 fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                                 usuario_actualizacion VARCHAR(50)
-);
-
--- ===============================
--- TABLA PROVEEDOR
--- ===============================
-CREATE TABLE proveedor (
-                           id INT PRIMARY KEY AUTO_INCREMENT,
-                           nombre VARCHAR(100) NOT NULL,
-                           ruc CHAR(11) NOT NULL UNIQUE,
-                           direccion VARCHAR(100),
-                           telefono VARCHAR(15),
-                           email VARCHAR(100) UNIQUE,
-                           fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-                           usuario_creacion VARCHAR(50),
-                           fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                           usuario_actualizacion VARCHAR(50)
-);
--- ===============================
--- TABLA MEDICAMENTO
--- ===============================
-CREATE TABLE medicamento (
-                             id INT PRIMARY KEY AUTO_INCREMENT,
-                             nombre VARCHAR(100) NOT NULL UNIQUE,
-                             descripcion VARCHAR(255),
-                             stockActual INT DEFAULT 0,
-                             stockMinimo INT DEFAULT 0,
-                             precio DECIMAL(10,2) NOT NULL,
-                             fechaVencimiento DATE,
-                             fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-                             usuario_creacion VARCHAR(50),
-                             fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                             usuario_actualizacion VARCHAR(50)
-);
-
--- ===============================
--- TABLA INGRESO MEDICAMENTO
--- ===============================
-CREATE TABLE ingreso_medicamento (
-                                     id INT PRIMARY KEY AUTO_INCREMENT,
-                                     idMedicamento INT NOT NULL,
-                                     idProveedor INT NOT NULL,
-                                     fechaIngreso DATE NOT NULL,
-                                     cantidad INT NOT NULL,
-                                     precioCompra DECIMAL(10,2) NOT NULL,
-                                     FOREIGN KEY(idMedicamento) REFERENCES medicamento(id)
-                                         ON DELETE CASCADE ON UPDATE CASCADE,
-                                     FOREIGN KEY(idProveedor) REFERENCES proveedor(id)
-                                         ON DELETE RESTRICT ON UPDATE CASCADE,
-                                     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-                                     usuario_creacion VARCHAR(50),
-                                     fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                                     usuario_actualizacion VARCHAR(50)
-);
-
 -- ===============================
 -- INDICES ADICIONALES
 -- ===============================
 CREATE INDEX idx_paciente_dni ON paciente(dni);
 CREATE INDEX idx_medico_cmp ON medico(cmp);
-CREATE INDEX idx_proveedor_ruc ON proveedor(ruc);
 CREATE INDEX idx_usuario_nombre ON usuario(username);
 
 USE railway;
